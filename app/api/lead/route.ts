@@ -69,6 +69,12 @@ export async function POST(request: Request) {
     );
 
     if (!telegramResponse.ok) {
+
+      console.log("Telegram env check:", {
+        hasBotToken: Boolean(process.env.TELEGRAM_BOT_TOKEN),
+        hasChatId: Boolean(process.env.TELEGRAM_CHAT_ID),
+      });
+
       return NextResponse.json(
         { message: "Telegram request failed" },
         { status: 502 },
@@ -76,7 +82,10 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ message: "Lead sent successfully" });
-  } catch {
+  } catch (error) {
+    
+    console.error("Lead API unexpected error:", error);
+    
     return NextResponse.json(
       { message: "Unexpected server error" },
       { status: 500 },
