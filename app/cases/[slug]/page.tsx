@@ -8,6 +8,14 @@ import { CasePageHero } from "@/components/case/CasePageHero";
 import { CaseTextSection } from "@/components/case/CaseTextSection";
 import { OtherCases } from "@/components/case/OtherCases";
 import { cases, getCaseBySlug, getRelatedCases } from "@/data/cases";
+import { CaseTagsSection } from "@/components/case/CaseTagsSection";
+import { getDirectionsBySlugs } from "@/data/directions";
+import { getProblemsBySlugs } from "@/data/problems";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  getBreadcrumbJsonLd,
+  getCaseArticleJsonLd,
+} from "@/lib/jsonLd";
 
 type CasePageProps = {
   params: Promise<{
@@ -61,11 +69,28 @@ export default async function CasePage({ params }: CasePageProps) {
   }
 
   const relatedCases = getRelatedCases(caseItem);
+  const caseDirections = getDirectionsBySlugs(caseItem.directionSlugs);
+  const caseProblems = getProblemsBySlugs(caseItem.problemSlugs);
 
   return (
     <SiteLayout>
+      <JsonLd
+        data={[
+          getBreadcrumbJsonLd([
+            { name: "Главная", href: "/" },
+            { name: "Кейсы", href: "/cases" },
+            { name: caseItem.shortTitle, href: caseItem.href },
+          ]),
+          getCaseArticleJsonLd(caseItem),
+        ]}
+      />
       <CasePageHero item={caseItem} />
       <CaseMeta item={caseItem} />
+
+      <CaseTagsSection
+        directions={caseDirections}
+        problems={caseProblems}
+      />
 
       {caseItem.sections.map((section) => (
         <CaseTextSection

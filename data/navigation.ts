@@ -7,10 +7,9 @@ export type HeaderNavItem = {
 
 export const headerNav: HeaderNavItem[] = [
   { label: "Услуги", href: "/services" },
+  { label: "Направления", href: "/directions" },
+  { label: "Проблемы", href: "/problems" },
   { label: "Кейсы", href: "/cases" },
-  { label: "Цены", href: "/#prices" },
-  { label: "О компании", href: "/#trust" },
-  { label: "FAQ", href: "/#faq" },
   { label: "Контакты", href: "/contacts" },
 ];
 
@@ -29,6 +28,14 @@ export const navigation: NavItem[] = [
   {
     label: "Услуги",
     href: "/services",
+  },
+  {
+    label: "Направления работ",
+    href: "/directions",
+  },
+  {
+    label: "Проблемы объектов",
+    href: "/problems",
   },
   {
     label: "Кейсы",

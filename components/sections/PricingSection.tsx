@@ -1,32 +1,42 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/ui/Section";
 import { pricingItems } from "@/data/pricing";
+import { Button } from "@/components/ui/Button";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function PricingSection() {
   return (
-    <Section id="prices" className="pricing-section" spacing="lg">
+    <Section id="prices" className="pricing-section" spacing="sm">
       <Container>
+        <SectionHeading
+          eyebrow="Стоимость"
+          title="Стоимость зависит от причины проблемы, узла и объёма работ"
+          description="Мы не даём универсальную цену без понимания задачи: одинаковое проявление — например вода в подвале, течь по шву или протечка кровли — может требовать разных инженерных решений."
+        />
+
         <div className="pricing-section__card">
-          <div className="pricing-section__content">
-            <p className="section-kicker">Стоимость</p>
+          {pricingItems.map((item) => (
+            <article className="pricing-card" key={item.title}>
+              <h3 className="pricing-card__title">{item.title}</h3>
+              <p className="pricing-card__text">{item.text}</p>
+            </article>
+          ))}
+        </div>
 
-            <h2 className="section-title">
-              Ориентировочная стоимость работ
-            </h2>
+        <div className="pricing-section__note">
+          <p>
+            Итоговый расчёт формируется после понимания задачи: где проявляется
+            проблема, какая конструкция повреждена, есть ли активное
+            водопоступление, какой доступ к участку и какие работы потребуются —
+            гидроизоляция, герметизация, восстановление бетона, кладки или
+            кровельного узла.
+          </p>
+        </div>
 
-            <p className="section-lead">
-              Точная стоимость зависит от типа конструкции, характера протечки,
-              объёма работ и доступа к проблемной зоне.
-            </p>
-          </div>
-
-          <div className="pricing-section__list">
-            {pricingItems.map((item) => (
-              <div key={item.title} className="pricing-section__item">
-                {item.title}
-              </div>
-            ))}
-          </div>
+        <div className="pricing-section__actions">
+          <Button href="/#estimate" variant="primary" size="lg">
+            Получить предварительный расчёт
+          </Button>
         </div>
       </Container>
     </Section>

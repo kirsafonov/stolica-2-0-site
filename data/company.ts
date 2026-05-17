@@ -2,7 +2,7 @@ import type { CompanyData } from "../types";
 
 export const company: CompanyData = {
   brandName: "Столица",
-  brandTagline: "Инъекционная гидроизоляция и устранение сложных протечек",
+  brandTagline: "Ремонт и восстановление конструкций",
 
   phones: [
     {

@@ -1,40 +1,56 @@
+import Link from "next/link";
+
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/ui/Section";
-import { ServiceCard } from "@/components/ui/ServiceCard";
-import { coreServices } from "@/data/services";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { getDirectionBySlug } from "@/data/directions";
+import type { Direction } from "@/data/directions";
+
+const homeDirectionSlugs = [
+  "repair-and-restoration",
+  "injection-waterproofing",
+  "leak-repair",
+  "concrete-repair",
+  "brickwork-restoration",
+  "engineering-penetrations",
+  "underground-structures",
+  "roof-nodes-repair",
+];
+
+const homeDirections = homeDirectionSlugs
+  .map((slug) => getDirectionBySlug(slug))
+  .filter(Boolean) as Direction[];
 
 export function ServicesCoreSection() {
   return (
-    <Section id="services" className="services-core-section" spacing="lg">
+    <Section id="services" className="services-core-section" spacing="sm">
       <Container>
-        <div className="section-split services-core-section__layout">
-          <div className="section-split__aside section-split__aside--sticky services-core-section__intro">
-            <p className="section-kicker">Основные направления</p>
+        <SectionHeading
+          eyebrow="Направления работ"
+          title="Комплексный подход к восстановлению конструкций и устранению водопроявлений"
+          description="Работаем не с отдельной симптоматикой, а с причиной проблемы: определяем узел, состояние конструкции и подбираем инженерный способ восстановления."
+        />
 
-            <h2 className="section-title">
-              Работаем там, где нужна не общая теория, а точное инженерное
-              решение
-            </h2>
+        <div className="services-core-section__grid">
+          {homeDirections.map((direction) => (
+            <Link
+              key={direction.slug}
+              href={direction.href}
+              className="home-direction-card"
+            >
+              <h3 className="home-direction-card__title">
+                {direction.shortTitle}
+              </h3>
 
-            <p className="section-lead">
-              На каждом объекте сначала определяем источник проблемы, поведение
-              конструкции и рабочий способ устранения протечки, а уже потом
-              приступаем к работам.
-            </p>
-          </div>
+              <p className="home-direction-card__description">
+                {direction.description}
+              </p>
 
-          <div className="section-split__body">
-            <div className="services-core-section__grid">
-              {coreServices.map((service) => (
-                <ServiceCard
-                  key={service.title}
-                  title={service.title}
-                  description={service.description}
-                  variant={service.variant}
-                />
-              ))}
-            </div>
-          </div>
+              <span className="home-direction-card__link">
+                Подробнее
+              </span>
+            </Link>
+          ))}
         </div>
       </Container>
     </Section>

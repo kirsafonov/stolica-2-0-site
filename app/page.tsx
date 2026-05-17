@@ -2,7 +2,7 @@ import { SiteLayout } from "@/components/layout/SiteLayout";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { MetricsSection } from "@/components/sections/MetricsSection";
 import { ServicesCoreSection } from "@/components/sections/ServicesCoreSection";
-import { ServicesExtraSection } from "@/components/sections/ServicesExtraSection";
+import { HomeProblemsSection } from "@/components/sections/HomeProblemsSection";
 import { ObjectTypesSection } from "@/components/sections/ObjectTypesSection";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { FeaturedCasesSection } from "@/components/sections/FeaturedCasesSection";
@@ -17,7 +17,7 @@ export default function HomePage() {
       <HeroSection />
       <MetricsSection />
       <ServicesCoreSection />
-      <ServicesExtraSection />
+      <HomeProblemsSection />
       <ObjectTypesSection />
       <TrustSection />
       <FeaturedCasesSection />

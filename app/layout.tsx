@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { getOrganizationJsonLd, getWebSiteJsonLd } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://stolica-msk.com"),
-  title: "Столица — Инъекционная гидроизоляция и устранение сложных протечек",
+  title: {
+    default:
+      "Столица — ремонтно-восстановительные работы и гидроизоляция",
+    template: "%s | Столица",
+  },
   description:
-    "Инъекционная гидроизоляция, устранение сложных протечек, герметизация швов, вводов коммуникаций, трещин и деформационных узлов.",
+    "Ремонтно-восстановительные работы, инъекционная гидроизоляция, устранение протечек, восстановление бетона и кирпичной кладки, герметизация швов, трещин и вводов коммуникаций в Москве и Московской области.",
   icons: {
     icon: "/branding/logo-mark.png",
     shortcut: "/branding/logo-mark.png",
@@ -26,7 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        <JsonLd data={[getOrganizationJsonLd(), getWebSiteJsonLd()]} />
+        {children}
+      </body>
     </html>
   );
 }

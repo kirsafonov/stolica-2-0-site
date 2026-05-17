@@ -10,23 +10,23 @@ export function ServicesPageHero() {
           <p className="services-page-hero__eyebrow">Услуги</p>
 
           <h1 className="services-page-hero__title">
-            Инъекционная гидроизоляция, герметизация швов и устранение протечек
+            Ремонтно-восстановительные работы, гидроизоляция и защита конструкций
           </h1>
 
           <p className="services-page-hero__description">
-            Работаем с подвалами, паркингами, фундаментами, техническими
-            помещениями, историческими зданиями и сложными узлами, где важно
-            сначала найти источник воды, а затем подобрать точное инженерное
-            решение.
+            Выполняем работы на сложных строительных объектах: устраняем
+            водопроявления, герметизируем швы, трещины и вводы коммуникаций,
+            восстанавливаем бетон, кирпичную кладку, кровельные узлы и
+            подземные конструкции.
           </p>
 
           <div className="services-page-hero__actions">
-            <Button href="/cases" variant="primary" size="lg">
-              Смотреть кейсы
+            <Button href="/directions" variant="primary" size="lg">
+              Смотреть направления
             </Button>
 
-            <Button href="/contacts" variant="secondary" size="lg">
-              Связаться
+            <Button href="/#estimate" variant="secondary" size="lg">
+              Получить расчёт
             </Button>
           </div>
         </div>

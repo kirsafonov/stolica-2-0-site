@@ -10,12 +10,13 @@ export function ObjectTypesSection() {
       <Container>
         <SectionHeading
           eyebrow="Типы объектов"
-          title="С какими объектами работаем"
+          title="Работаем с объектами, где важны инженерная точность и ответственность за результат"
+          description="Каждый объект требует своего подхода: где-то нужно остановить активное водопоступление, где-то восстановить кладку или бетон, а где-то — разобраться с узлом, который уже ремонтировали раньше."
         />
 
         <div className="object-types-section__grid">
           {objectTypes.map((item) => (
-            <ObjectTypeCard key={item.title} title={item.title} />
+            <ObjectTypeCard key={item.title} title={item.title} text={item.text} />
           ))}
         </div>
       </Container>

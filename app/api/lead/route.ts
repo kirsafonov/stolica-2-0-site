@@ -1,93 +1,132 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-function getFormValue(formData: FormData, key: string) {
-  const value = formData.get(key);
+type LeadPayload = {
+  name?: string;
+  phone?: string;
+  email?: string;
+  objectType?: string;
+  region?: string;
+  message?: string;
+  consent?: boolean;
+};
 
-  if (typeof value !== "string") {
-    return "";
+function getRequiredEnv(name: string) {
+  const value = process.env[name];
+
+  if (!value) {
+    throw new Error(`Missing environment variable: ${name}`);
   }
 
-  return value.trim();
+  return value;
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function formatValue(value?: string) {
+  const trimmed = value?.trim();
+
+  return trimmed ? escapeHtml(trimmed) : "—";
 }
 
 export async function POST(request: Request) {
   try {
-    const formData = await request.formData();
+    const data = (await request.json()) as LeadPayload;
 
-    const name = getFormValue(formData, "name");
-    const phone = getFormValue(formData, "phone");
-    const email = getFormValue(formData, "email");
-    const objectType = getFormValue(formData, "objectType");
-    const region = getFormValue(formData, "region");
-    const message = getFormValue(formData, "message");
-    const consent = getFormValue(formData, "consent");
+    const name = data.name?.trim();
+    const phone = data.phone?.trim();
 
-    if (!name || !phone || !consent) {
+    if (!name || !phone) {
       return NextResponse.json(
-        { message: "Required fields are missing" },
+        { ok: false, message: "Укажите имя и телефон." },
         { status: 400 },
       );
     }
 
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-
-    if (!botToken || !chatId) {
+    if (!data.consent) {
       return NextResponse.json(
-        { message: "Telegram credentials are not configured" },
-        { status: 500 },
+        {
+          ok: false,
+          message: "Необходимо согласие на обработку персональных данных.",
+        },
+        { status: 400 },
       );
     }
 
-    const telegramMessage = [
+    const smtpHost = getRequiredEnv("SMTP_HOST");
+    const smtpPort = Number(process.env.SMTP_PORT || 465);
+    const smtpSecure = process.env.SMTP_SECURE !== "false";
+    const smtpUser = getRequiredEnv("SMTP_USER");
+    const smtpPass = getRequiredEnv("SMTP_PASS");
+    const leadToEmail = getRequiredEnv("LEAD_TO_EMAIL");
+    const leadFromEmail = process.env.LEAD_FROM_EMAIL || smtpUser;
+
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    });
+
+    const subject = `Заявка с сайта ООО «Столица»: ${name}`;
+
+    const html = `
+      <h2>Новая заявка с сайта ООО «Столица»</h2>
+
+      <p><strong>Имя:</strong> ${formatValue(data.name)}</p>
+      <p><strong>Телефон:</strong> ${formatValue(data.phone)}</p>
+      <p><strong>Email:</strong> ${formatValue(data.email)}</p>
+      <p><strong>Тип объекта:</strong> ${formatValue(data.objectType)}</p>
+      <p><strong>Город / регион:</strong> ${formatValue(data.region)}</p>
+
+      <h3>Что происходит на объекте</h3>
+      <p>${formatValue(data.message).replaceAll("\n", "<br />")}</p>
+    `;
+
+    const text = [
       "Новая заявка с сайта ООО «Столица»",
       "",
-      `Имя: ${name}`,
-      `Телефон: ${phone}`,
-      email ? `Email: ${email}` : null,
-      objectType ? `Тип объекта: ${objectType}` : null,
-      region ? `Город / регион: ${region}` : null,
-      message ? `Описание проблемы: ${message}` : null,
+      `Имя: ${data.name || "—"}`,
+      `Телефон: ${data.phone || "—"}`,
+      `Email: ${data.email || "—"}`,
+      `Тип объекта: ${data.objectType || "—"}`,
+      `Город / регион: ${data.region || "—"}`,
       "",
-      "Согласие на обработку персональных данных: да",
-    ]
-      .filter(Boolean)
-      .join("\n");
+      "Что происходит на объекте:",
+      data.message || "—",
+    ].join("\n");
 
-    const telegramResponse = await fetch(
-      `https://api.telegram.org/bot${botToken}/sendMessage`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: telegramMessage,
-        }),
-      },
-    );
+    await transporter.sendMail({
+      from: `"Сайт ООО Столица" <${leadFromEmail}>`,
+      to: leadToEmail,
+      replyTo: data.email || undefined,
+      subject,
+      text,
+      html,
+    });
 
-    if (!telegramResponse.ok) {
-
-      console.log("Telegram env check:", {
-        hasBotToken: Boolean(process.env.TELEGRAM_BOT_TOKEN),
-        hasChatId: Boolean(process.env.TELEGRAM_CHAT_ID),
-      });
-
-      return NextResponse.json(
-        { message: "Telegram request failed" },
-        { status: 502 },
-      );
-    }
-
-    return NextResponse.json({ message: "Lead sent successfully" });
+    return NextResponse.json({
+      ok: true,
+      message: "Заявка отправлена.",
+    });
   } catch (error) {
-    
-    console.error("Lead API unexpected error:", error);
-    
+    console.error("Lead form error:", error);
+
     return NextResponse.json(
-      { message: "Unexpected server error" },
+      {
+        ok: false,
+        message: "Не удалось отправить заявку. Попробуйте позже или свяжитесь по телефону.",
+      },
       { status: 500 },
     );
   }

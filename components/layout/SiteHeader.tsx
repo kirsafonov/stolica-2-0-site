@@ -46,7 +46,7 @@ export function SiteHeader() {
             >
               <Image
                 src="/branding/logo-wordmark.png"
-                alt="Столица — Инъекционная гидроизоляция"
+                alt="Столица — Ремонтно-восстановительные работы"
                 width={260}
                 height={74}
                 priority
@@ -118,7 +118,7 @@ export function SiteHeader() {
           >
             <Image
               src="/branding/logo-wordmark.png"
-              alt="Столица — Инъекционная гидроизоляция"
+              alt="Столица — Ремонтно-восстановительные работы"
               width={220}
               height={62}
               className="site-header__drawer-logo"

@@ -28,7 +28,7 @@ export function WorkflowSection() {
     <Section className="workflow-section" spacing="sm">
       <Container>
         <div className="workflow-section__header">
-          <SectionHeading eyebrow="Подход" title="Как мы работаем" />
+          <SectionHeading eyebrow="Подход" title="От первичной диагностики до проверенного результата" />
 
           <div className="workflow-section__controls" aria-label="Прокрутка этапов">
             <button

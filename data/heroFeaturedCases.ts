@@ -19,12 +19,14 @@ export const heroFeaturedCases: HeroFeaturedCase[] = [
     eyebrow: "Исторический объект",
     city: "Москва",
     title: "Колпачный переулок",
-    task: "Инъекционная гидроизоляция подвала, остановка водопроявлений и защита кирпичной кладки.",
-    secondaryLabel: "Узел",
+    task:
+      "Остановка водопроявлений, инъекционная гидроизоляция и защита кирпичной кладки в подземной части исторического здания.",
+    secondaryLabel: "Зона",
     secondaryValue: "Подвал",
-    result: "Активные протечки остановлены",
+    result: "Водопроявления локализованы",
     image: "/media/home/case-cover-kolpachny.jpeg",
-    imageAlt: "Колпачный переулок, инъекционная гидроизоляция подвала",
+    imageAlt:
+      "Колпачный переулок, ремонтно-восстановительные работы и гидроизоляция подземной части",
     href: "/cases/dom-knopa-kolpachnyy-pereulok",
     isPrimary: true,
   },
@@ -33,12 +35,14 @@ export const heroFeaturedCases: HeroFeaturedCase[] = [
     eyebrow: "Жилой комплекс",
     city: "Москва",
     title: "ЖК Вандерпарк",
-    task: "Восстановление узлов эксплуатируемой кровли, новая ПВХ-мембрана и устранение постоянных протечек.",
-    secondaryLabel: "Узел",
+    task:
+      "Ремонт узлов эксплуатируемой кровли, восстановление гидроизоляции, водоотвода и примыканий.",
+    secondaryLabel: "Зона",
     secondaryValue: "Кровля",
-    result: "Проблемные участки восстановлены",
-    image: "/media/home/case-cover-vanderpark.jpeg",
-    imageAlt: "ЖК Вандерпарк, восстановление эксплуатируемой кровли",
+    result: "Кровельные узлы восстановлены",
+    image: "/media/home/case-cover-zhk-vanderpark.jpeg",
+    imageAlt:
+      "ЖК Вандерпарк, ремонт узлов эксплуатируемой кровли и восстановление гидроизоляции",
     href: "/cases/zhk-vanderpark",
   },
   {
@@ -46,12 +50,14 @@ export const heroFeaturedCases: HeroFeaturedCase[] = [
     eyebrow: "Исторический объект",
     city: "Москва",
     title: "Фабрика «Свобода»",
-    task: "Противоаварийные работы, переопирание, восстановление кладки и локальное усиление конструкций.",
-    secondaryLabel: "Формат",
-    secondaryValue: "Усиление",
-    result: "Конструкция стабилизирована",
+    task:
+      "Локальные противоаварийные работы, переопирание, восстановление бетона, кладки и проёмов.",
+    secondaryLabel: "Зона",
+    secondaryValue: "Подвал",
+    result: "Конструкции стабилизированы",
     image: "/media/home/case-cover-svoboda.jpeg",
-    imageAlt: "Фабрика Свобода, противоаварийные работы",
+    imageAlt:
+      "Фабрика Свобода, ремонтно-восстановительные и противоаварийные работы",
     href: "/cases/fabrika-svoboda",
   },
   {
@@ -59,12 +65,14 @@ export const heroFeaturedCases: HeroFeaturedCase[] = [
     eyebrow: "Жилой комплекс",
     city: "Москва",
     title: "Садовые кварталы",
-    task: "Инъекционная гидроизоляция холодных и деформационных швов, трещин и узлов подземной части.",
-    secondaryLabel: "Узел",
-    secondaryValue: "Швы",
+    task:
+      "Комплексная инъекционная гидроизоляция холодных и деформационных швов, трещин и зон водопоступления.",
+    secondaryLabel: "Зона",
+    secondaryValue: "Подвал",
     result: "Водопоступление локализовано",
     image: "/media/home/case-cover-sadovye-kvartaly.jpeg",
-    imageAlt: "Садовые кварталы, работа с швами и трещинами",
+    imageAlt:
+      "Садовые кварталы, инъекционная гидроизоляция швов и трещин в подземной части",
     href: "/cases/sadovye-kvartaly",
   },
   {
@@ -72,12 +80,14 @@ export const heroFeaturedCases: HeroFeaturedCase[] = [
     eyebrow: "Жилой комплекс",
     city: "Москва",
     title: "ЖК на Мосфильмовской, 74Б",
-    task: "Инъектирование холодных швов, трещин и деформационного шва в подземной части паркинга.",
-    secondaryLabel: "Узел",
-    secondaryValue: "Паркинг",
+    task:
+      "Инъекционная гидроизоляция холодных швов, трещин и деформационного шва в подземной части жилого комплекса.",
+    secondaryLabel: "Зона",
+    secondaryValue: "Подвал",
     result: "Протечки в подземной части устранены",
     image: "/media/home/case-cover-mosfilmovskaya.jpeg",
-    imageAlt: "ЖK на Мосфильмовской, инъектирование швов и трещин",
+    imageAlt:
+      "ЖК на Мосфильмовской 74Б, инъекционная гидроизоляция швов и трещин",
     href: "/cases/zhk-na-mosfilmovskoy-74b",
   },
 ];

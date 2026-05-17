@@ -5,22 +5,24 @@ import { FeaturedCasesSection } from "@/components/sections/FeaturedCasesSection
 import { ObjectTypesSection } from "@/components/sections/ObjectTypesSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { ServicesCoreSection } from "@/components/sections/ServicesCoreSection";
-import { ServicesExtraSection } from "@/components/sections/ServicesExtraSection";
 import { ServicesPageHero } from "@/components/sections/ServicesPageHero";
 import { WorkflowSection } from "@/components/sections/WorkflowSection";
+import { ServicesDirectionsSection } from "@/components/sections/ServicesDirectionsSection";
+import { HomeProblemsSection } from "@/components/sections/HomeProblemsSection";
+import { CtaWithForm } from "@/components/sections/CtaWithForm";
 
 export const metadata: Metadata = {
   title:
-    "Услуги по инъекционной гидроизоляции и устранению протечек в Москве",
+    "Услуги: ремонтно-восстановительные работы, гидроизоляция и восстановление конструкций",
   description:
-    "ООО «Столица»: инъекционная гидроизоляция, герметизация холодных и деформационных швов, устранение протечек, гидроизоляция подвалов, трещин и вводов коммуникаций.",
+    "ООО «Столица» выполняет ремонтно-восстановительные работы: инъекционную гидроизоляцию, устранение протечек, герметизацию швов и трещин, восстановление бетона, кирпичной кладки, кровельных узлов и подземных конструкций.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Услуги ООО «Столица»",
+    title: "Услуги ООО «Столица»: ремонтно-восстановительные работы и гидроизоляция",
     description:
-      "Инъекционная гидроизоляция, герметизация швов, устранение протечек, работа с подвалами, паркингами, фундаментами и техническими помещениями.",
+      "Направления работ: устранение протечек, инъекционная гидроизоляция, швы, трещины, вводы коммуникаций, бетон, кладка, кровельные узлы и подземные конструкции.",
     url: "/services",
     type: "website",
   },
@@ -30,12 +32,9 @@ export default function ServicesPage() {
   return (
     <SiteLayout>
       <ServicesPageHero />
-      <ServicesCoreSection />
-      <ServicesExtraSection />
-      <ObjectTypesSection />
-      <PricingSection />
-      <WorkflowSection />
-      <FeaturedCasesSection />
+      <ServicesDirectionsSection />
+      <HomeProblemsSection />
+      <CtaWithForm />
     </SiteLayout>
   );
 }

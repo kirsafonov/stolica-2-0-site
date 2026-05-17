@@ -52,6 +52,7 @@ export type DocumentItem = {
 
 export type ObjectTypeItem = {
   title: string;
+  text: string;
 };
 
 export type WorkflowStep = {

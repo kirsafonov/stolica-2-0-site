@@ -1,7 +1,7 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { CheckboxField } from "@/components/forms/CheckboxField";
@@ -20,34 +20,59 @@ export function LeadForm({
   submitText = "Отправить заявку",
 }: LeadFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [statusMessage, setStatusMessage] = useState("");
+
   const classes = ["lead-form", className].filter(Boolean).join(" ");
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    const payload = {
+      name: String(formData.get("name") || ""),
+      phone: String(formData.get("phone") || ""),
+      email: String(formData.get("email") || ""),
+      objectType: String(formData.get("objectType") || ""),
+      region: String(formData.get("region") || ""),
+      message: String(formData.get("message") || ""),
+      consent: formData.get("consent") === "on",
+    };
+
     setStatus("sending");
+    setStatusMessage("");
 
     try {
       const response = await fetch("/api/lead", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("Lead request failed");
+      const result = (await response.json()) as {
+        ok?: boolean;
+        message?: string;
+      };
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Не удалось отправить заявку.");
       }
 
-      form.reset();
       setStatus("success");
-    } catch {
+      setStatusMessage("Заявка отправлена. Мы свяжемся с вами.");
+      form.reset();
+    } catch (error) {
       setStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Не удалось отправить заявку. Попробуйте позже или свяжитесь по телефону.",
+      );
     }
   }
-
-  const isSending = status === "sending";
 
   return (
     <form className={classes} onSubmit={handleSubmit}>
@@ -81,7 +106,7 @@ export function LeadForm({
           id="objectType"
           name="objectType"
           label="Тип объекта"
-          placeholder="ЖК, паркинг, подвал, кровля"
+          placeholder="ЖК, подвал, паркинг, кровля, техпомещение"
         />
 
         <FormField
@@ -94,8 +119,8 @@ export function LeadForm({
         <TextareaField
           id="message"
           name="message"
-          label="Краткое описание проблемы"
-          placeholder="Опишите, где течёт и что происходит"
+          label="Что происходит на объекте"
+          placeholder="Опишите проблему: где появилась вода, какой узел течёт, есть ли трещины, мокрые стены, швы, вводы коммуникаций или кровельный узел"
           rows={6}
         />
       </div>
@@ -107,32 +132,40 @@ export function LeadForm({
           required
           label={
             <>
-              Нажимая кнопку, я соглашаюсь на{" "}
+              Нажимая кнопку, я соглашаюсь на обработку персональных данных,
+              принимаю{" "}
+              <Link href="/privacy-policy">Политику конфиденциальности</Link>{" "}
+              и{" "}
               <Link href="/personal-data-consent">
-                обработку персональных данных
-              </Link>{" "}
-              и принимаю{" "}
-              <Link href="/privacy-policy">Политику конфиденциальности</Link>.
+                Согласие на обработку персональных данных
+              </Link>
+              .
             </>
           }
         />
 
-        <Button type="submit" variant="primary" size="lg" fullWidth disabled={isSending}>
-          {isSending ? "Отправляем..." : submitText}
+        {statusMessage && (
+          <p
+            className={
+              status === "success"
+                ? "lead-form__status lead-form__status--success"
+                : "lead-form__status lead-form__status--error"
+            }
+          >
+            {statusMessage}
+          </p>
+        )}
+
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          fullWidth
+          disabled={status === "sending"}
+        >
+          {status === "sending" ? "Отправляем..." : submitText}
         </Button>
       </div>
-
-      {status === "success" ? (
-        <p className="lead-form__status lead-form__status--success">
-          Заявка отправлена. Мы свяжемся с вами в ближайшее время.
-        </p>
-      ) : null}
-
-      {status === "error" ? (
-        <p className="lead-form__status lead-form__status--error">
-          Не удалось отправить заявку. Попробуйте ещё раз или свяжитесь с нами по телефону.
-        </p>
-      ) : null}
     </form>
   );
 }

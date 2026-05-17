@@ -14,12 +14,11 @@ export function HeroHome() {
             </div>
 
             <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Инъекционная гидроизоляция и устранение сложных протечек
+              Ремонт и восстановление конструкций на сложных объектах
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-              Работаем со сложными протечками, холодными и деформационными швами,
-              трещинами, вводами инженерных коммуникаций и подземными частями зданий.
+              Работаем с водопроявлениями, дефектами бетона и кирпичной кладки, швами, трещинами, вводами коммуникаций, кровельными узлами и подземными конструкциями.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -45,7 +44,7 @@ export function HeroHome() {
 
               <Image
                 src="/branding/logo-illustration.png"
-                alt="Столица — инъекционная гидроизоляция"
+                alt="Столица — Ремонтно-восстановительные работы"
                 width={1200}
                 height={900}
                 priority
