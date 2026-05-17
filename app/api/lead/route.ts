@@ -68,16 +68,6 @@ export async function POST(request: Request) {
     const leadToEmail = getRequiredEnv("LEAD_TO_EMAIL");
     const leadFromEmail = process.env.LEAD_FROM_EMAIL || smtpUser;
 
-    console.log("SMTP config on server:", {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE,
-      user: process.env.SMTP_USER,
-      to: process.env.LEAD_TO_EMAIL,
-      from: process.env.LEAD_FROM_EMAIL,
-      hasPass: Boolean(process.env.SMTP_PASS),
-    });
-
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
