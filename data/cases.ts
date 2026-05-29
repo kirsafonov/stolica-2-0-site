@@ -448,11 +448,6 @@ export const cases: CaseItem[] = [
         title: "Временное переопирание",
       },
       {
-        src: "/media/cases/fabrika-svoboda/process_04.jpeg",
-        alt: "Фабрика Свобода, подготовка материалов и участка к противоаварийным работам",
-        title: "Подготовка участка",
-      },
-      {
         src: "/media/cases/fabrika-svoboda/process_02.jpeg",
         alt: "Фабрика Свобода, армирование и подготовка основания перед восстановлением участка",
         title: "Армирование основания",
@@ -812,11 +807,6 @@ export const cases: CaseItem[] = [
         src: "/media/cases/zhk-mosfilmovskaya/process_02.jpeg",
         alt: "ЖК на Мосфильмовской 74Б, подготовка проблемных участков бетонной плиты к инъектированию",
         title: "Подготовка к инъектированию",
-      },
-      {
-        src: "/media/cases/zhk-mosfilmovskaya/process_03.jpeg",
-        alt: "ЖК на Мосфильмовской 74Б, обработка трещин и швов в подземной части объекта",
-        title: "Обработка швов",
       },
       {
         src: "/media/cases/zhk-mosfilmovskaya/optional_01.jpeg",
