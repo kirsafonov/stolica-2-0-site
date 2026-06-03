@@ -29,4 +29,12 @@ export const documents: DocumentItem[] = [
     preview: "/media/documents/gratitude-kazansky-sobor.jpeg",
     previewAlt: "Грамота за работы по Казанскому собору",
   },
+  {
+  title: "Благодарность от 3-й мотострелковой дивизии",
+  description:
+    "Благодарность генеральному директору ООО «Столица» Михаилу Попову за оказанную поддержку.",
+  preview: "/media/documents/gratitude-3rd-motor-rifle-division.jpg",
+  previewAlt:
+    "Благодарность ООО «Столица» от 3-й мотострелковой дивизии",
+}
 ];

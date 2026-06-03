@@ -61,10 +61,10 @@ export const heroFeaturedCases: HeroFeaturedCase[] = [
     href: "/cases/fabrika-svoboda",
   },
   {
-    slug: "sadovye-kvartaly",
+    slug: "krylatskaya-23-dom-gorizontov",
     eyebrow: "Жилой комплекс",
     city: "Москва",
-    title: "Садовые кварталы",
+    title: "Крылатская 23: Дом горизонтов, работа с швами и трещинами",
     task:
       "Комплексная инъекционная гидроизоляция холодных и деформационных швов, трещин и зон водопоступления.",
     secondaryLabel: "Зона",
@@ -72,8 +72,8 @@ export const heroFeaturedCases: HeroFeaturedCase[] = [
     result: "Водопоступление локализовано",
     image: "/media/home/case-cover-sadovye-kvartaly.jpeg",
     imageAlt:
-      "Садовые кварталы, инъекционная гидроизоляция швов и трещин в подземной части",
-    href: "/cases/sadovye-kvartaly",
+      "Крылатская 23: Дом горизонтов, работа с швами и трещинами",
+    href: "/cases/krylatskaya-23-dom-gorizontov",
   },
   {
     slug: "mosfilmovskaya",

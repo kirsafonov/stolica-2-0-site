@@ -140,7 +140,7 @@ export const cases: CaseItem[] = [
         title: "Гидроизоляция шахты",
       },
     ],
-    relatedSlugs: ["fabrika-svoboda", "kazanskiy-sobor-na-krasnoy-ploshchadi", "sadovye-kvartaly"],
+    relatedSlugs: ["fabrika-svoboda", "kazanskiy-sobor-na-krasnoy-ploshchadi", "krylatskaya-23-dom-gorizontov"],
     directionSlugs: [
       "injection-waterproofing",
       "leak-repair",
@@ -256,7 +256,7 @@ export const cases: CaseItem[] = [
         title: "Итоговый результат",
       },
     ],
-    relatedSlugs: ["dom-knopa-kolpachnyy-pereulok", "fabrika-svoboda", "sadovye-kvartaly"],
+    relatedSlugs: ["dom-knopa-kolpachnyy-pereulok", "fabrika-svoboda", "krylatskaya-23-dom-gorizontov"],
     directionSlugs: [
       "repair-and-restoration",
       "deformation-joints",
@@ -371,7 +371,7 @@ export const cases: CaseItem[] = [
         title: "Дополнительный вид результата",
       },
     ],
-    relatedSlugs: ["sadovye-kvartaly", "zhk-na-mosfilmovskoy-74b", "inzhenernye-kommunikatsii"],
+    relatedSlugs: ["krylatskaya-23-dom-gorizontov", "zhk-na-mosfilmovskoy-74b", "inzhenernye-kommunikatsii"],
     directionSlugs: [
       "leak-repair",
       "roof-nodes-repair",
@@ -473,7 +473,7 @@ export const cases: CaseItem[] = [
         title: "Усиленный проем",
       },
     ],
-    relatedSlugs: ["dom-knopa-kolpachnyy-pereulok", "kazanskiy-sobor-na-krasnoy-ploshchadi", "sadovye-kvartaly"],
+    relatedSlugs: ["dom-knopa-kolpachnyy-pereulok", "kazanskiy-sobor-na-krasnoy-ploshchadi", "krylatskaya-23-dom-gorizontov"],
     directionSlugs: [
       "repair-and-restoration",
       "brickwork-restoration",
@@ -591,7 +591,7 @@ export const cases: CaseItem[] = [
         title: "Дополнительная обработка узла",
       },
     ],
-    relatedSlugs: ["sadovye-kvartaly", "zhk-na-mosfilmovskoy-74b", "zhk-vanderpark"],
+    relatedSlugs: ["krylatskaya-23-dom-gorizontov", "zhk-na-mosfilmovskoy-74b", "zhk-vanderpark"],
     directionSlugs: [
       "engineering-penetrations",
       "leak-repair",
@@ -606,13 +606,13 @@ export const cases: CaseItem[] = [
     ],
   },
   {
-    slug: "sadovye-kvartaly",
-    title: "Садовые кварталы",
-    shortTitle: "Садовые кварталы",
+    slug: "krylatskaya-23-dom-gorizontov",
+    title: "Крылатская 23: Дом горизонтов — инъектирование швов и трещин",
+    shortTitle: "Крылатская 23: Дом горизонтов",
     description:
-      "Комплексная инъекционная гидроизоляция подземной части жилого комплекса: холодные и деформационные швы, трещины и локальные зоны водопоступления.",
+      "Комплексная работа с холодными и деформационными швами, трещинами и зонами водопоступления в подземной части объекта.",
     lead:
-      "В подземной части жилого комплекса требовалось комплексно обработать несколько типов проблемных зон: холодные швы, деформационные швы, трещины и участки локального водопоступления.",
+      "Комплекс гидроизоляционных работ в подземной части объекта: швы, трещины и локальные зоны поступления воды.",
     objectType: "Жилой комплекс",
     location: "Москва",
     works: [
@@ -623,13 +623,13 @@ export const cases: CaseItem[] = [
     ],
     result: "Проблемные зоны локализованы, водопоступление через обработанные швы, трещины и участки подземной части остановлено.",
     image: "/media/home/case-cover-sadovye-kvartaly.jpeg",
-    imageAlt: "Садовые кварталы, инъекционная гидроизоляция швов и трещин в подземной части жилого комплекса",
-    href: "/cases/sadovye-kvartaly",
+    imageAlt: "Крылатская 23: Дом горизонтов, инъектирование швов и трещин",
+    href: "/cases/krylatskaya-23-dom-gorizontov",
     seo: {
       title:
-        "Садовые кварталы — инъекционная гидроизоляция швов и трещин",
+        "Крылатская 23: Дом горизонтов — инъектирование швов и трещин",
       description:
-        "Кейс ООО «Столица»: комплексная инъекционная гидроизоляция подземной части жилого комплекса, герметизация холодных и деформационных швов, трещин и зон водопоступления.",
+        "Кейс ООО «Столица»: комплексная инъекционная гидроизоляция подземной части жилого дома, герметизация холодных и деформационных швов, трещин и зон водопоступления.",
     },
     meta: [
       { label: "Объект", value: "Жилой комплекс" },
@@ -664,47 +664,47 @@ export const cases: CaseItem[] = [
     gallery: [
       {
         src: "/media/cases/sadovye-kvartaly/before_01.jpeg",
-        alt: "Садовые кварталы, проблемный шов в подземной части жилого комплекса до гидроизоляционных работ",
+        alt: "Дом горизонтов, проблемный шов в подземной части жилого комплекса до гидроизоляционных работ",
         title: "Проблемный шов до работ",
       },
       {
         src: "/media/cases/sadovye-kvartaly/before_02.jpeg",
-        alt: "Садовые кварталы, участок стены и пола с водопроявлением до инъектирования",
+        alt: "Дом горизонтов, участок стены и пола с водопроявлением до инъектирования",
         title: "Зона водопоступления",
       },
       {
         src: "/media/cases/sadovye-kvartaly/before_03.jpeg",
-        alt: "Садовые кварталы, деформационный шов перед гидроизоляционной обработкой",
+        alt: "Дом горизонтов, деформационный шов перед гидроизоляционной обработкой",
         title: "Деформационный шов до работ",
       },
       {
         src: "/media/cases/sadovye-kvartaly/cover_01.jpeg",
-        alt: "Садовые кварталы, работы по инъекционной гидроизоляции в подземной части жилого комплекса",
+        alt: "Дом горизонтов, работы по инъекционной гидроизоляции в подземной части жилого комплекса",
         title: "Работы в подземной части",
       },
       {
         src: "/media/cases/sadovye-kvartaly/process_01.jpeg",
-        alt: "Садовые кварталы, процесс инъектирования проблемных зон и швов",
+        alt: "Дом горизонтов, процесс инъектирования проблемных зон и швов",
         title: "Инъектирование швов",
       },
       {
         src: "/media/cases/sadovye-kvartaly/process_02.jpeg",
-        alt: "Садовые кварталы, оборудование и шланги для инъекционной гидроизоляции на объекте",
+        alt: "Дом горизонтов, оборудование и шланги для инъекционной гидроизоляции на объекте",
         title: "Процесс инъектирования",
       },
       {
         src: "/media/cases/sadovye-kvartaly/reserve_01.jpeg",
-        alt: "Садовые кварталы, вертикальный участок холодного шва перед обработкой",
+        alt: "Дом горизонтов, вертикальный участок холодного шва перед обработкой",
         title: "Вертикальный холодный шов",
       },
       {
         src: "/media/cases/sadovye-kvartaly/result_01.jpeg",
-        alt: "Садовые кварталы, обработанный шов после выполнения гидроизоляционных работ",
+        alt: "Дом горизонтов, обработанный шов после выполнения гидроизоляционных работ",
         title: "Обработанный шов",
       },
       {
         src: "/media/cases/sadovye-kvartaly/result_02.jpeg",
-        alt: "Садовые кварталы, результат локализации водопоступления в подземной части",
+        alt: "Дом горизонтов, результат локализации водопоступления в подземной части",
         title: "Локализация водопоступления",
       },
     ],
@@ -839,7 +839,7 @@ export const cases: CaseItem[] = [
         title: "Работа специалиста",
       },
     ],
-    relatedSlugs: ["sadovye-kvartaly", "zhk-vanderpark", "inzhenernye-kommunikatsii"],
+    relatedSlugs: ["krylatskaya-23-dom-gorizontov", "zhk-vanderpark", "inzhenernye-kommunikatsii"],
     directionSlugs: [
       "injection-waterproofing",
       "leak-repair",

@@ -1077,7 +1077,7 @@ h4 {
   max-width: 12ch;
   margin: 0;
   color: #ffffff;
-  font-size: clamp(54px, 5.8vw, 86px);
+  font-size: clamp(54px, 5.8vw, 76px);
   font-weight: 780;
   line-height: 1.02;
   letter-spacing: -0.045em;
@@ -4265,6 +4265,47 @@ button.doc-card {
   line-height: 1.7;
 }
 
+.cta-with-form__benefits {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cta-with-form__benefits-title {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--light);
+}
+
+.cta-with-form__benefits-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cta-with-form__benefits-list li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--muted-light);
+  line-height: 1.55;
+}
+
+.cta-with-form__benefits-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
 .cta-with-form__contacts {
   margin-top: 28px;
   display: flex;
@@ -4302,8 +4343,7 @@ button.doc-card {
   gap: 16px;
 }
 
-.lead-form__grid .form-field:nth-child(6),
-.lead-form__grid .form-field:nth-child(7) {
+.lead-form__field--wide {
   grid-column: 1 / -1;
 }
 

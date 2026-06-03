@@ -39,13 +39,13 @@ export const featuredCases: FeaturedCaseItem[] = [
     href: "/cases/fabrika-svoboda",
   },
   {
-    title: "Садовые кварталы",
+    title: "Крылатская 23: Дом горизонтов",
     description:
       "Комплексная инъекционная гидроизоляция подземной части: холодные и деформационные швы, трещины и зоны водопоступления.",
     image: "/media/home/case-cover-sadovye-kvartaly.jpeg",
     imageAlt:
-      "Садовые кварталы, инъекционная гидроизоляция швов и трещин в подземной части",
-    href: "/cases/sadovye-kvartaly",
+      "Крылатская 23: Дом горизонтов, инъектирование швов и трещин",
+    href: "/cases/krylatskaya-23-dom-gorizontov",
   },
   {
     title: "Мосфильмовская, 74Б",

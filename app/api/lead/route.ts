@@ -4,9 +4,6 @@ import nodemailer from "nodemailer";
 type LeadPayload = {
   name?: string;
   phone?: string;
-  email?: string;
-  objectType?: string;
-  region?: string;
   message?: string;
   consent?: boolean;
 };
@@ -19,6 +16,13 @@ function getRequiredEnv(name: string) {
   }
 
   return value;
+}
+
+function parseEmailList(value: string) {
+  return value
+    .split(",")
+    .map((email) => email.trim())
+    .filter(Boolean);
 }
 
 function escapeHtml(value: string) {
@@ -34,6 +38,12 @@ function formatValue(value?: string) {
   const trimmed = value?.trim();
 
   return trimmed ? escapeHtml(trimmed) : "—";
+}
+
+function formatTextValue(value?: string) {
+  const trimmed = value?.trim();
+
+  return trimmed || "—";
 }
 
 export async function POST(request: Request) {
@@ -65,7 +75,7 @@ export async function POST(request: Request) {
     const smtpSecure = process.env.SMTP_SECURE !== "false";
     const smtpUser = getRequiredEnv("SMTP_USER");
     const smtpPass = getRequiredEnv("SMTP_PASS");
-    const leadToEmail = getRequiredEnv("LEAD_TO_EMAIL");
+    const leadToEmails = parseEmailList(getRequiredEnv("LEAD_TO_EMAIL"));
     const leadFromEmail = process.env.LEAD_FROM_EMAIL || smtpUser;
 
     const transporter = nodemailer.createTransport({
@@ -85,31 +95,30 @@ export async function POST(request: Request) {
 
       <p><strong>Имя:</strong> ${formatValue(data.name)}</p>
       <p><strong>Телефон:</strong> ${formatValue(data.phone)}</p>
-      <p><strong>Email:</strong> ${formatValue(data.email)}</p>
-      <p><strong>Тип объекта:</strong> ${formatValue(data.objectType)}</p>
-      <p><strong>Город / регион:</strong> ${formatValue(data.region)}</p>
 
       <h3>Что происходит на объекте</h3>
       <p>${formatValue(data.message).replaceAll("\n", "<br />")}</p>
+
+      <hr />
+
+      <p style="color:#666;font-size:13px;">
+        Заявка отправлена через форму сайта.
+      </p>
     `;
 
     const text = [
       "Новая заявка с сайта ООО «Столица»",
       "",
-      `Имя: ${data.name || "—"}`,
-      `Телефон: ${data.phone || "—"}`,
-      `Email: ${data.email || "—"}`,
-      `Тип объекта: ${data.objectType || "—"}`,
-      `Город / регион: ${data.region || "—"}`,
+      `Имя: ${formatTextValue(data.name)}`,
+      `Телефон: ${formatTextValue(data.phone)}`,
       "",
       "Что происходит на объекте:",
-      data.message || "—",
+      formatTextValue(data.message),
     ].join("\n");
 
     await transporter.sendMail({
       from: `"Сайт ООО Столица" <${leadFromEmail}>`,
-      to: leadToEmail,
-      replyTo: data.email || undefined,
+      to: leadToEmails,
       subject,
       text,
       html,
@@ -125,7 +134,8 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        message: "Не удалось отправить заявку. Попробуйте позже или свяжитесь по телефону.",
+        message:
+          "Не удалось отправить заявку. Попробуйте позже или свяжитесь по телефону.",
       },
       { status: 500 },
     );

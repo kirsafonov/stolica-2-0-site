@@ -12,8 +12,8 @@ const homeDirectionSlugs = [
   "leak-repair",
   "concrete-repair",
   "brickwork-restoration",
-  "engineering-penetrations",
   "underground-structures",
+  "engineering-penetrations",
   "roof-nodes-repair",
 ];
 

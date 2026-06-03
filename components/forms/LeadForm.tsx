@@ -33,9 +33,6 @@ export function LeadForm({
     const payload = {
       name: String(formData.get("name") || ""),
       phone: String(formData.get("phone") || ""),
-      email: String(formData.get("email") || ""),
-      objectType: String(formData.get("objectType") || ""),
-      region: String(formData.get("region") || ""),
       message: String(formData.get("message") || ""),
       consent: formData.get("consent") === "on",
     };
@@ -94,29 +91,8 @@ export function LeadForm({
           required
         />
 
-        <FormField
-          id="email"
-          name="email"
-          label="Email"
-          type="email"
-          placeholder="info@example.com"
-        />
-
-        <FormField
-          id="objectType"
-          name="objectType"
-          label="Тип объекта"
-          placeholder="ЖК, подвал, паркинг, кровля, техпомещение"
-        />
-
-        <FormField
-          id="region"
-          name="region"
-          label="Город / регион"
-          placeholder="Москва"
-        />
-
-        <TextareaField
+        <TextareaField 
+          className="lead-form__field lead-form__field--wide"
           id="message"
           name="message"
           label="Что происходит на объекте"

@@ -22,6 +22,16 @@ export function CtaWithForm() {
               какие работы могут потребоваться.
             </p>
 
+            <div className="cta-with-form__benefits">
+              <p className="cta-with-form__benefits-title">Почему выбирают «Столицу»</p>
+
+              <ul className="cta-with-form__benefits-list">
+                <li>15 лет практики на жилых, коммерческих и исторических объектах</li>
+                <li>Работаем с причиной проблемы, а не только с видимым следом</li>
+                <li>Фиксируем объём работ, сроки и гарантию по договору</li>
+              </ul>
+            </div>
+
             <div className="cta-with-form__contacts">
               <div className="cta-with-form__phones">
                 {company.phones.map((phone) => (
