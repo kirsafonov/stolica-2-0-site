@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/ui/Section";
 import { company } from "@/data/company";
+import { MessengerLinks } from "@/components/ui/MessengerLinks";
 
 const estimateChecklist = [
   "тип объекта: подвал, паркинг, кровля, техническое помещение, историческое здание",
@@ -37,6 +38,7 @@ export function ContactsDetailsSection() {
                 <a href={company.email.href} className="contacts-list__link">
                   {company.email.label}
                 </a>
+                <MessengerLinks className="contacts-page__messengers" />
               </div>
 
               <div className="contacts-card__note">

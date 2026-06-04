@@ -8,10 +8,19 @@ export type ContactLink = {
   href: string;
 };
 
+export type MessengerId = "max" | "telegram" | "vk";
+
+export type MessengerLink = ContactLink & {
+  id: MessengerId;
+  icon: string;
+  ariaLabel: string;
+};
+
 export type CompanyData = {
   brandName: string;
   brandTagline: string;
   phones: ContactLink[];
+  messengers: MessengerLink[];
   email: ContactLink;
   workingHours: string;
   region: string;

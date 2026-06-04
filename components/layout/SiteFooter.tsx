@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MessengerLinks } from "@/components/ui/MessengerLinks";
 
 import { company } from "@/data/company";
 import { headerNav, legalNavigation } from "@/data/navigation";
@@ -74,6 +75,8 @@ export function SiteFooter() {
               <a className="site-footer__contact-link" href={company.email.href}>
                 {company.email.label}
               </a>
+
+              <MessengerLinks className="footer__messengers" />
             </div>
 
             <div className="site-footer__meta">

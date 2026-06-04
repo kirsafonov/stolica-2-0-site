@@ -15,6 +15,16 @@ export const company: CompanyData = {
     },
   ],
 
+  messengers: [
+    {
+      id: "max",
+      label: "Мы в MAX",
+      href: "https://max.ru/u/f9LHodD0cOLTX4XBb9JpWsI_HeN0WIxHLTkWWVGB-c66no6rNn3Qste2Rxk",
+      icon: "/media/icons/max.svg",
+      ariaLabel: "Написать в MAX",
+    },
+  ],
+
   email: {
     label: "info@stolica-msk.com",
     href: "mailto:info@stolica-msk.com",
