@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   description:
     "Ремонтно-восстановительные работы, инъекционная гидроизоляция, устранение протечек, восстановление бетона и кирпичной кладки, герметизация швов, трещин и вводов коммуникаций в Москве и Московской области.",
   icons: {
-    icon: "/branding/logo-mark.png",
-    shortcut: "/branding/logo-mark.png",
-    apple: "/branding/logo-mark.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.png",
   },
   formatDetection: {
     telephone: false,
