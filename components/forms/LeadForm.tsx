@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { CheckboxField } from "@/components/forms/CheckboxField";
 import { FormField } from "@/components/forms/FormField";
 import { TextareaField } from "@/components/forms/TextareaField";
+import { reachMetrikaGoal } from "@/utils/metrika";
 
 type LeadFormProps = {
   className?: string;
@@ -60,9 +61,11 @@ export function LeadForm({
 
       setStatus("success");
       setStatusMessage("Заявка отправлена. Мы свяжемся с вами.");
+      reachMetrikaGoal("lead_form_success");
       form.reset();
     } catch (error) {
       setStatus("error");
+      reachMetrikaGoal("lead_form_error");
       setStatusMessage(
         error instanceof Error
           ? error.message

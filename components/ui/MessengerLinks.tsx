@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 
 import { company } from "@/data/company";
+import { reachMetrikaGoal } from "@/utils/metrika";
 
 type MessengerLinksProps = {
   className?: string;
@@ -25,6 +28,7 @@ export function MessengerLinks({ className = "" }: MessengerLinksProps) {
           aria-label={item.ariaLabel}
           data-contact-link={item.id}
           data-metrika-goal={`click_${item.id}`}
+          onClick={() => reachMetrikaGoal(`click_${item.id}`)}
         >
           <Image
             src={item.icon}
