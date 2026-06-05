@@ -16,9 +16,13 @@ export const metadata: Metadata = {
   description:
     "Ремонтно-восстановительные работы, инъекционная гидроизоляция, устранение протечек, восстановление бетона и кирпичной кладки, герметизация швов, трещин и вводов коммуникаций в Москве и Московской области.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", sizes: "120x120", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    apple: "/favicon.png",
   },
   formatDetection: {
     telephone: false,
