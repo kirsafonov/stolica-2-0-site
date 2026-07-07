@@ -9,6 +9,28 @@ const nextConfig: NextConfig = {
         destination: "/cases/krylatskaya-23-dom-gorizontov",
         permanent: true,
       },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.stolica-msk.com",
+          },
+        ],
+        destination: "https://stolica-msk.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/",
+        has: [
+          {
+            type: "query",
+            key: "pagelayer-template",
+          },
+        ],
+        destination: "/",
+        permanent: true,
+      }
     ];
   },
 };
